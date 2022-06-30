@@ -2,6 +2,11 @@
   import { taskList } from "../store";
   export let task;
 
+  let checked = false;
+  let isInputDisabled = false;
+
+  $: isInputDisabled = checked ? true : false;
+
   const handleOnRemove = () => {
     taskList.update((arr) => arr.filter((currTask) => currTask.id != task.id));
   };
@@ -9,8 +14,13 @@
 
 <div class="container">
   <section>
-    <input type="checkbox" id="" />
-    <input type="text" value={task.content} />
+    <input bind:checked type="checkbox" />
+    <input
+      class:checked
+      type="text"
+      value={task.content}
+      disabled={isInputDisabled}
+    />
     <span class="remove" on:click={handleOnRemove}>X</span>
   </section>
 </div>
@@ -30,6 +40,10 @@
 
   .remove {
     cursor: pointer;
+  }
+
+  .checked {
+    text-decoration: line-through;
   }
 
   input[type="text"] {
