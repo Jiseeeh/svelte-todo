@@ -1,10 +1,26 @@
-<script></script>
+<script>
+  import { taskList } from "../store";
+
+  let value;
+
+  const handleOnAddTask = () => {
+    taskList.update((arr) => {
+      return [
+        ...arr,
+        {
+          id: arr.length,
+          content: value,
+        },
+      ];
+    });
+  };
+</script>
 
 <header>
   <h1>TODO LIST!</h1>
   <section>
-    <input type="text" id="task-field" />
-    <button>Add task</button>
+    <input bind:value type="text" id="task-field" />
+    <button on:click={handleOnAddTask}>Add task</button>
     <!-- TODO: Make this a component with onclick -->
   </section>
 </header>
