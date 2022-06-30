@@ -2,27 +2,16 @@
   import { taskList } from "../store";
   export let task;
 
-  let value = task.content;
-
-  const handleOnRemove = (taskId) => {
-    taskList.update((currentTask) => {
-      return currentTask.filter((task) => {
-        task !== taskId;
-      });
-    });
+  const handleOnRemove = () => {
+    taskList.update((arr) => arr.filter((currTask) => currTask.id != task.id));
   };
 </script>
 
 <div class="container">
   <section>
     <input type="checkbox" id="" />
-    <input bind:value type="text" />
-    <span
-      class="remove"
-      on:click={() => {
-        handleOnRemove(task.id);
-      }}>X</span
-    >
+    <input type="text" value={task.content} />
+    <span class="remove" on:click={handleOnRemove}>X</span>
   </section>
 </div>
 
