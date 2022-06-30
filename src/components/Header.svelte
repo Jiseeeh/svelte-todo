@@ -5,13 +5,15 @@
 
   const handleOnAddTask = () => {
     taskList.update((arr) => {
-      return [
+      const newArray = [
         ...arr,
         {
           id: arr.length,
           content: value,
         },
       ];
+      value = "";
+      return newArray;
     });
   };
 </script>
