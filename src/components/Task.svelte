@@ -1,11 +1,13 @@
 <script>
   import { taskList } from "../store";
   export let task;
-
-  let checked = false;
   let isInputDisabled = false;
 
-  $: isInputDisabled = checked ? true : false;
+  $: isInputDisabled = task.isChecked ? true : false;
+
+  const reloadTaskList = () => {
+    taskList.update((arr) => arr);
+  };
 
   const handleOnRemove = () => {
     taskList.update((arr) => arr.filter((currTask) => currTask.id != task.id));
@@ -14,12 +16,17 @@
 
 <div class="container">
   <section>
-    <input bind:checked type="checkbox" />
     <input
-      class:checked
+      bind:checked={task.isChecked}
+      type="checkbox"
+      on:change={reloadTaskList}
+    />
+    <input
+      class:checked={task.isChecked}
       type="text"
-      value={task.content}
+      bind:value={task.content}
       disabled={isInputDisabled}
+      on:change={reloadTaskList}
     />
     <span class="remove" on:click={handleOnRemove}>X</span>
   </section>
