@@ -10,6 +10,7 @@
         {
           id: arr.length,
           content: value,
+          isChecked: false,
         },
       ];
       value = "";
