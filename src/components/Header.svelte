@@ -1,9 +1,23 @@
 <script>
   import { taskList } from "../store";
+  import { fade } from "svelte/transition";
+  import { Modals, openModal, closeModal } from "svelte-modals";
+  import Modal from "./Modal.svelte";
 
-  let value;
+  let value = "";
+  let taskField = null;
+  let regexSpaces = /[ \b]+$/;
 
   const handleOnAddTask = () => {
+    if (value.match(regexSpaces) || !value) {
+      openModal(Modal, {
+        title: "Empty field",
+        message: "Type something there!",
+      });
+      value = "";
+      return;
+    }
+
     taskList.update((arr) => {
       const newArray = [
         ...arr,
@@ -14,15 +28,24 @@
         },
       ];
       value = "";
+      taskField.focus();
       return newArray;
     });
   };
 </script>
 
 <header>
+  <Modals>
+    <div
+      slot="backdrop"
+      class="backdrop"
+      transition:fade
+      on:click={closeModal}
+    />
+  </Modals>
   <h1>TODO LIST!</h1>
   <section>
-    <input bind:value type="text" id="task-field" />
+    <input bind:value bind:this={taskField} type="text" id="task-field" />
     <button on:click={handleOnAddTask}>Add task</button>
     <!-- TODO: Make this a component with onclick -->
   </section>
@@ -34,5 +57,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
   }
 </style>
