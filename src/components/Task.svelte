@@ -1,5 +1,6 @@
 <script>
   import { taskList } from "../store";
+  import garbage from "../assets/garbage.svg";
   export let task;
   let isInputDisabled = false;
 
@@ -14,8 +15,8 @@
   };
 </script>
 
-<div class="container">
-  <section>
+<div class="task-container">
+  <section class="task">
     <input
       bind:checked={task.isChecked}
       type="checkbox"
@@ -28,25 +29,32 @@
       disabled={isInputDisabled}
       on:change={reloadTaskList}
     />
-    <span class="remove" on:click={handleOnRemove}>X</span>
+    <img
+      class="remove"
+      src={garbage}
+      alt="green trash bin."
+      on:click={handleOnRemove}
+    />
   </section>
 </div>
 
 <style>
-  .container {
+  .task-container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  section {
+  .task {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 1rem;
+    border: 5px solid blue;
   }
 
   .remove {
     cursor: pointer;
+    height: 3rem;
   }
 
   .checked {
