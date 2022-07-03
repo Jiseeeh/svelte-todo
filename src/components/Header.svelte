@@ -11,8 +11,8 @@
   const handleOnAddTask = () => {
     if (value.match(regexSpaces) || !value) {
       openModal(Modal, {
-        title: "Empty field",
-        message: "Type something there!",
+        title: "Invalid input.",
+        message: "Please input properly.",
       });
       value = "";
       return;
