@@ -49,7 +49,6 @@
     justify-content: center;
     align-items: center;
     margin: 1rem;
-    border: 5px solid blue;
   }
 
   .remove {
