@@ -64,11 +64,13 @@
     background: none;
     border: 0;
     transition: all .15s linear;
-    border-bottom: 1px solid black;
+    background-color: hsl(213, 9%, 23%);
+    border-radius: 2px;
+    border-bottom: 1px solid hsl(213, 9%, 50%);
   }
   /* feat: element transitions  */
   input:focus , input:hover {
-    border-bottom: 3px solid black ;
+    border-bottom: 3px solid hsl(213, 9%, 50%) ;
   }
 
   .backdrop {
