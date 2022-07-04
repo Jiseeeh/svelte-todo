@@ -2,6 +2,7 @@
   import { taskList } from "../store";
   import { fade } from "svelte/transition";
   import { Modals, openModal, closeModal } from "svelte-modals";
+  import addTaskIcon from "../assets/add-task.svg"
   import Modal from "./Modal.svelte";
 
   let value = "";
@@ -46,7 +47,7 @@
   <h1>The bad news is time flies</h1>
   <section>
     <input bind:value bind:this={taskField} type="text" id="task-field" placeholder="Add a task..."/>
-    <button on:click={handleOnAddTask}>Add task</button>
+    <img class="add-icon" src={addTaskIcon} alt="calender with a plus sign inside a circle." on:click={handleOnAddTask}>
     <!-- TODO: Make this a component with onclick -->
   </section>
 </header>
@@ -59,8 +60,21 @@
     align-items: center;
   }
 
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-icon {
+    cursor: pointer;
+    height: clamp(3.5rem,10vw,5rem);
+    /* 3.5 5 */
+    fill: red;
+  }
+
   h1 {
-    font-size: clamp(4rem,5vw,6.5rem);
+    font-size: clamp(4rem,10vw,6.5rem);
     margin-top: 1rem;
     line-height: 1.5;
     text-align: center;
@@ -77,6 +91,10 @@
     border-radius: 2px;
     border-bottom: 1px solid hsl(213, 9%, 50%);
     color: hsl(218, 4%, 90%);
+    font-size: clamp(1.7rem,5vw,3rem);
+    /* 1.7  3*/
+    margin-right: 1rem;
+    padding: .5rem;
   }
   /* feat: element transitions  */
   input:focus , input:hover {
