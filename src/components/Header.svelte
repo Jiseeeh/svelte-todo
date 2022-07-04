@@ -45,7 +45,7 @@
   </Modals>
   <h1>TODO LIST!</h1>
   <section>
-    <input bind:value bind:this={taskField} type="text" id="task-field" />
+    <input bind:value bind:this={taskField} type="text" id="task-field" placeholder="Add a task..."/>
     <button on:click={handleOnAddTask}>Add task</button>
     <!-- TODO: Make this a component with onclick -->
   </section>
