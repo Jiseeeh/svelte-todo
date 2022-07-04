@@ -67,6 +67,7 @@
     background-color: hsl(213, 9%, 23%);
     border-radius: 2px;
     border-bottom: 1px solid hsl(213, 9%, 50%);
+    color: hsl(218, 4%, 90%);
   }
   /* feat: element transitions  */
   input:focus , input:hover {

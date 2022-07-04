@@ -66,5 +66,6 @@
     outline: none;
     padding: 0.5rem;
     margin: 1rem;
+    color: #fff;
   }
 </style>
