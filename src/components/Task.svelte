@@ -53,7 +53,8 @@
 
   .remove {
     cursor: pointer;
-    height: 3rem;
+    height: clamp(4rem,10vw,5rem);
+    /* 4,  */
   }
 
   .checked {
@@ -70,5 +71,7 @@
     padding: 0.5rem;
     margin: 1rem;
     color: #fff;
+    font-size: clamp(1.5rem,5vw,2.5rem);
+    /* 1.5 2.5*/
   }
 </style>
