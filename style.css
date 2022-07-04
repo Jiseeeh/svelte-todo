@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Gulzar&display=swap');
 *,
 *::before,
 *::after {
@@ -9,5 +10,6 @@
 
 body {
   height: 100vh;
+  font-family: 'Gulzar',serif;
   background-color: hsl(212, 11%, 26%);
 }
