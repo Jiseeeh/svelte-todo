@@ -43,7 +43,7 @@
       on:click={closeModal}
     />
   </Modals>
-  <h1>TODO LIST!</h1>
+  <h1>The bad news is time flies</h1>
   <section>
     <input bind:value bind:this={taskField} type="text" id="task-field" placeholder="Add a task..."/>
     <button on:click={handleOnAddTask}>Add task</button>
@@ -57,6 +57,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(4rem,5vw,6.5rem);
+    margin-top: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 3px 3px 2px hsl(213, 9%, 50%);
   }
 
   input {
