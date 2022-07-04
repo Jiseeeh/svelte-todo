@@ -60,6 +60,9 @@
     text-decoration: line-through;
   }
 
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
   input[type="text"] {
     border: none;
     background: none;
