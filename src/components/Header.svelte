@@ -59,6 +59,18 @@
     align-items: center;
   }
 
+  input {
+    outline: none;
+    background: none;
+    border: 0;
+    transition: all .15s linear;
+    border-bottom: 1px solid black;
+  }
+  /* feat: element transitions  */
+  input:focus , input:hover {
+    border-bottom: 3px solid black ;
+  }
+
   .backdrop {
     position: fixed;
     top: 0;
