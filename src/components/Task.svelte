@@ -65,6 +65,7 @@
 
   input[type="checkbox"] {
     cursor: pointer;
+    transform: scale(1.5);
   }
   input[type="text"] {
     border: none;
