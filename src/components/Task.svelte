@@ -25,6 +25,7 @@
     <input
       class:checked={task.isChecked}
       type="text"
+      autocomplete="off"
       bind:value={task.content}
       disabled={isInputDisabled}
       on:change={reloadTaskList}

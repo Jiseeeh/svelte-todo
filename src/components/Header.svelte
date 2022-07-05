@@ -46,7 +46,7 @@
   </Modals>
   <h1>The bad news is time flies</h1>
   <section>
-    <input bind:value bind:this={taskField} type="text" id="task-field" placeholder="Add a task..."/>
+    <input bind:value bind:this={taskField} type="text" id="task-field" placeholder="Add a task..." autocomplete="off"/>
     <img class="add-icon" src={addTaskIcon} alt="calender with a plus sign inside a circle." on:click={handleOnAddTask}>
     <!-- TODO: Make this a component with onclick -->
   </section>
