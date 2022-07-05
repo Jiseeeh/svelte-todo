@@ -1,13 +1,25 @@
 <script>
+  // ---------------------------------------------------------
+  //  Imports
+  // ---------------------------------------------------------
+
   import { taskList } from "../store";
   import { fade } from "svelte/transition";
   import { Modals, openModal, closeModal } from "svelte-modals";
-  import addTaskIcon from "../assets/add-task.svg"
+  import addTaskIcon from "../assets/add-task.svg";
   import Modal from "./Modal.svelte";
+
+  // ---------------------------------------------------------
+  //  Varaible Declarations
+  // ---------------------------------------------------------
 
   let value = "";
   let taskField = null;
   let regexSpaces = /[ \b]+$/;
+
+  // ---------------------------------------------------------
+  //  Methods Declarations
+  // ---------------------------------------------------------
 
   const handleOnAddTask = () => {
     if (value.match(regexSpaces) || !value) {
@@ -28,8 +40,11 @@
           isChecked: false,
         },
       ];
+
+      // this sets the inputfield value to empty and focus it
       value = "";
       taskField.focus();
+
       return newArray;
     });
   };
@@ -46,59 +61,69 @@
   </Modals>
   <h1>The bad news is time flies</h1>
   <section>
-    <input bind:value bind:this={taskField} type="text" id="task-field" placeholder="Add a task..." autocomplete="off"/>
-    <img class="add-icon" src={addTaskIcon} alt="calender with a plus sign inside a circle." on:click={handleOnAddTask}>
-    <!-- TODO: Make this a component with onclick -->
+    <input
+      type="text"
+      id="task-field"
+      placeholder="Add a task..."
+      autocomplete="off"
+      bind:value
+      bind:this={taskField}
+    />
+    <img
+      class="add-icon"
+      src={addTaskIcon}
+      alt="calender with a plus sign inside a circle."
+      on:click={handleOnAddTask}
+    />
   </section>
 </header>
 
 <style>
   header {
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
 
   section {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   .add-icon {
     cursor: pointer;
-    height: clamp(3.5rem,10vw,5rem);
-    /* 3.5 5 */
     fill: red;
+    height: clamp(3.5rem, 10vw, 5rem);
   }
 
   h1 {
-    font-size: clamp(4rem,10vw,6.5rem);
-    margin-top: 1rem;
-    line-height: 1.5;
-    text-align: center;
+    font-size: clamp(4rem, 10vw, 6.5rem);
     font-style: italic;
+    line-height: 1.5;
+    margin-top: 1rem;
+    text-align: center;
     text-shadow: 3px 3px 2px hsl(213, 9%, 50%);
   }
 
   input {
-    outline: none;
-    background: none;
-    border: 0;
-    transition: all .15s linear;
     background-color: hsl(213, 9%, 23%);
-    border-radius: 2px;
+    background: none;
     border-bottom: 1px solid hsl(213, 9%, 50%);
+    border-radius: 2px;
+    border: 0;
     color: hsl(218, 4%, 90%);
-    font-size: clamp(1.7rem,5vw,3rem);
-    /* 1.7  3*/
+    font-size: clamp(1.7rem, 5vw, 3rem);
     margin-right: 1rem;
-    padding: .5rem;
+    outline: none;
+    padding: 0.5rem;
+    transition: all 0.15s linear;
   }
-  /* feat: element transitions  */
-  input:focus , input:hover {
-    border-bottom: 3px solid hsl(213, 9%, 50%) ;
+
+  input:focus,
+  input:hover {
+    border-bottom: 3px solid hsl(213, 9%, 50%);
   }
 
   .backdrop {

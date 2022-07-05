@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gulzar&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gulzar&display=optional");
 *,
 *::before,
 *::after {
@@ -8,21 +8,22 @@
   font-size: 62.5%;
 }
 
-
 body {
   height: 100vh;
-  font-family: 'Gulzar',serif;
+  font-family: "Gulzar", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   background-color: hsl(212, 11%, 26%);
 }
 
 body::-webkit-scrollbar {
   width: 1em;
 }
- 
+
 body::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
- 
+
 body::-webkit-scrollbar-thumb {
   background-color: hsl(213, 9%, 35%);
   border-radius: 10px;

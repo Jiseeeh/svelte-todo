@@ -1,34 +1,53 @@
 <script>
-  import { taskList } from "../store";
-  import { fade, fly } from 'svelte/transition';
-  import garbage from "../assets/garbage.svg";
-  export let task;
-  let isInputDisabled = false;
+  // ---------------------------------------------------------
+  //  Imports
+  // ---------------------------------------------------------
 
+  import { taskList } from "../store";
+  import { fade, fly } from "svelte/transition";
+  import garbage from "../assets/garbage.svg";
+
+  // ---------------------------------------------------------
+  //  Props
+  // ---------------------------------------------------------
+
+  export let task;
+
+  // ---------------------------------------------------------
+  //  Varaible Declarations
+  // ---------------------------------------------------------
+
+  let isInputDisabled = false;
   $: isInputDisabled = task.isChecked ? true : false;
 
+  // ---------------------------------------------------------
+  //  Method Declarations
+  // ---------------------------------------------------------
+
   const reloadTaskList = () => {
+    // updates the task-list in the local storage.
     taskList.update((arr) => arr);
   };
 
   const handleOnRemove = () => {
+    // sets the task-list in the local storage to the filtered list without the removed task.
     taskList.update((arr) => arr.filter((currTask) => currTask.id != task.id));
   };
 </script>
 
-<div class="task-container" in:fly="{{ y: 100, duration: 1500 }}" out:fade>
+<div class="task-container" in:fly={{ y: 100, duration: 1500 }} out:fade>
   <section class="task">
     <input
-      bind:checked={task.isChecked}
       type="checkbox"
+      bind:checked={task.isChecked}
       on:change={reloadTaskList}
     />
     <input
       class:checked={task.isChecked}
       type="text"
       autocomplete="off"
-      bind:value={task.content}
       disabled={isInputDisabled}
+      bind:value={task.content}
       on:change={reloadTaskList}
     />
     <img
@@ -42,21 +61,20 @@
 
 <style>
   .task-container {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
   .task {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     margin: 1rem;
   }
 
   .remove {
     cursor: pointer;
-    height: clamp(4rem,10vw,5rem);
-    /* 4,  */
+    height: clamp(4rem, 10vw, 5rem);
   }
 
   .checked {
@@ -68,13 +86,12 @@
     transform: scale(1.5);
   }
   input[type="text"] {
-    border: none;
     background: none;
+    border: none;
+    color: #fff;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin: 1rem;
     outline: none;
     padding: 0.5rem;
-    margin: 1rem;
-    color: #fff;
-    font-size: clamp(1.5rem,5vw,2.5rem);
-    /* 1.5 2.5*/
   }
 </style>
