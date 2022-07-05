@@ -1,5 +1,6 @@
 <script>
   import { taskList } from "../store";
+  import { fade, fly } from 'svelte/transition';
   import garbage from "../assets/garbage.svg";
   export let task;
   let isInputDisabled = false;
@@ -15,7 +16,7 @@
   };
 </script>
 
-<div class="task-container">
+<div class="task-container" in:fly="{{ y: 100, duration: 1500 }}" out:fade>
   <section class="task">
     <input
       bind:checked={task.isChecked}
