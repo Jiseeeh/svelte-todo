@@ -4,5 +4,5 @@
 
 ![banner](https://raw.githubusercontent.com/doggo-qt/RPS/master/images/Practice.png)
 
-- I made this to utilize and extend my **existing** knowledge and not to *let it go* away.
+- I made this to utilize and extend my **existing** knowledge and not to *let it go* away. (Update: this might go away now because I am not learning svelte now lamaw)
 - This might not look good for you but *I made this myself* so yeah.
